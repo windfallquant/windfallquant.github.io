@@ -78,16 +78,24 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  animation: fadeInScale 0.6s ease forwards;
-  opacity: 0;
+
+  /* stable default state */
+  opacity: 1;
+  transform: translateY(0) scale(1);
+
+  /* animation only affects first paint; hover works after */
+  animation: fadeInScale 0.6s ease both;
+
+  position: relative;
+  z-index: 1;
+  transform-origin: center;
+  will-change: transform;
+  transition: transform 220ms ease, box-shadow 220ms ease;
   cursor: pointer;
 }
 
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.6);
-}
+
+
 
 .card h3 {
   font-size: 1.15rem;
@@ -102,7 +110,9 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
-
+.card-section p {
+  margin: 0;
+}
 .card p {
   font-size: 0.95rem;
   color: #cbd5e1;
@@ -345,21 +355,15 @@ section h2 {
   }
 }
 
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
-.card:nth-child(5) { animation-delay: 0.5s; }
-.card:nth-child(6) { animation-delay: 0.6s; }
 
 @keyframes fadeInScale {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(10px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -369,12 +373,7 @@ section h2 {
   opacity: 0;
 }
 
-/* Cards animate individually */
-.card {
-  animation: fadeInScale 0.6s ease forwards;
-  opacity: 0;
-  transform: scale(0.98);
-}
+
 
 .card:nth-child(1) { animation-delay: 0.1s; }
 .card:nth-child(2) { animation-delay: 0.2s; }
@@ -518,4 +517,41 @@ body.scroll-lock {
   position: fixed;
   overflow: hidden;
   width: 100%;
+}
+
+/* --- Card hover expand (put at bottom to override earlier rules) --- */
+.card {
+  position: relative;
+  z-index: 1;
+  transform-origin: center;
+  will-change: transform;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* Hover + keyboard focus */
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-8px) scale(1.06);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.55);
+  z-index: 50;
+}
+
+/* Prevent default outline while keeping accessibility */
+.card:focus { outline: none; }
+.card:focus-visible {
+  outline: 2px solid rgba(15, 180, 246, 0.65);
+  outline-offset: 3px;
+}
+
+.icon-svg,
+.icon-img {
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+/* Project cards expand on hover */
+.project-grid .card:hover,
+.project-grid .card:focus-visible {
+  transform: translateY(-8px) scale(1.06);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.55);
+  z-index: 50;
 }

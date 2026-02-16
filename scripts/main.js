@@ -1,151 +1,165 @@
-
 const personalProjects = [
-{
-    title: "Regen",
-    subtitle: "Quantitative Sports Betting Engine",
-    cardMessage: "Developed a bot sharp enough to get limited by the books.",
+  {
+    title: "Pricing Analytics Pipeline",
+    subtitle: "Real-time ingestion, normalization, and alerting (Python, SQL)",
+    cardMessage:
+      "Identifies pricing discrepancies in real time by ingesting live data, normalizing lines via devigging, persisting records in SQL, and triggering alerts when mispricings appear.",
     description:
-    "<p>Regen is a fully automated sports betting engine I developed in Python (2,300+ lines, solo). It continuously scrapes live odds using Selenium, stores bet data in an SQL database, and computes expected value by devigging Pinnacle’s sharper lines into fair market prices. The system compares these to BetMGM odds across moneylines, spreads, totals, and player props. +EV opportunities are flagged and posted via a Discord bot using the Discord API.</p>" +
-    "<p>Regen has delivered over 50% ROI. Due to sustained profitable betting, I am now limited on BetMGM for MLB, NBA, NHL, and player props.</p>",
-    tags: ["Python", "Web Scraping", "SQL", "Data Analysis", "Automation", "Expected Value"],
-    icon: `<img src="./projects/regen/icon.png" alt="Regen project icon" class="icon-img" />`,
-    image: "./projects/regen/preview.png"
-},
-{
-    title: "SolverSheets",
-    subtitle: "Automated Solver Analysis & Study Dashboard",
-    cardMessage: "Analyzed 2.3TB of solver data in one dynamic spreadsheet.",
+      "<p><strong>Problem:</strong> Identifies pricing discrepancies across multiple sources that require continuous, real-time monitoring.</p>" +
+      "<p><strong>Approach:</strong> Engineers an end-to-end pipeline: scraping/ingestion → normalization (devigging) → SQL storage → rules-based detection → Discord alerting.</p>" +
+      "<p><strong>Outcome:</strong> Enables instant visibility into mispriced markets and sends actionable alerts across moneylines, spreads, totals, and props.</p>" +
+      "<p style='margin-top:0.75rem; font-size:0.9rem; opacity:0.8;'><em>Core pricing logic omitted to protect proprietary methodology. Code available upon request.</em></p>",
+    tags: [
+      "Python",
+      "SQL",
+      "Data Pipeline",
+      "Web Scraping",
+      "Selenium",
+      "Playwright",
+      "Data Normalization",
+      "Alerting",
+      "Anomaly Detection",
+    ],
+    icon: `<img src="./projects/regen/icon.png" alt="Pricing Analytics Pipeline icon" class="icon-img" />`,
+    image: "./projects/regen/preview.png",
+  },
+  {
+    title: "Analytics Dashboard",
+    subtitle: "Solver Sheets: large CSV → pivots, heatmaps, and summaries (Excel, VBA)",
+    cardMessage:
+      "Transforms large CSV outputs into an interactive Excel dashboard with pivot tables, heatmaps, and standardized decision summaries for fast analysis.",
     description:
-    "<p>Built a VBA-powered Excel tool to analyze large-scale PioSOLVER outputs. The dashboard generates pivot tables, equity maps, and heuristic breakdowns from .csv reports for deep strategy analysis.</p>" +
-    "<p>Users can select scenarios via dropdowns, filter flops by board texture, and visualize optimal strategies using conditional formatting and ranking heuristics.</p>",
-    tags: ["Excel", "VBA", "Data Visualization", "Automation", "Heuristics", "Pivot Tables"],
-    icon: `<img src="./projects/solversheets/icon.png" alt="Regen project icon" class="icon-img" />`,
-    image: "./projects/solversheets/preview.png"
-},
-{
-    title: "Sports Betting Sim",
-    subtitle: "Bankroll Risk Simulation via Monte Carlo",
-    cardMessage: "Modeled 10,000 bets to forecast ROI and risk of ruin.",
+      "<p><strong>Problem:</strong> Reduces the time and inconsistency caused by manual review of large CSV outputs.</p>" +
+      "<p><strong>Approach:</strong> Builds an Excel/VBA workflow that ingests CSVs, generates pivot tables and heatmaps, and supports interactive filtering (dropdowns, board-texture logic) plus ranking heuristics.</p>" +
+      "<p><strong>Outcome:</strong> Produces a repeatable, analyst-friendly dashboard that speeds review and improves consistency across scenarios.</p>",
+    tags: [
+      "Excel",
+      "VBA",
+      "Dashboarding",
+      "Pivot Tables",
+      "Data Transformation",
+      "Automation",
+      "Data Visualization",
+    ],
+    icon: `<img src="./projects/solversheets/icon.png" alt="Analytics Dashboard (Solver Sheets) icon" class="icon-img" />`,
+    image: "./projects/solversheets/preview.png",
+  },
+  {
+    title: "Market Crash Prediction",
+    subtitle: "Naive Bayes classifier using macro indicators (Python/R)",
+    cardMessage:
+      "Classifies monthly market regimes using macro indicators and validates the signal through out-of-sample testing and backtesting.",
     description:
-    "<p>This Excel-based Monte Carlo simulator models bankroll trajectories over thousands of individual bets. Users input their edge, bet size, odds, and number of trials to simulate long-run results and assess expected value, variance, and downside risk.</p>" +
-    "<p>The simulator leverages VBA to run 10,000+ randomized bets per click, outputting bankroll curves and outcome histograms. It’s designed to stress-test staking strategies and visualize the volatility of +EV betting systems, especially under the Kelly Criterion or fixed-percentage approaches.</p>",
-    tags: ["Excel", "Monte Carlo", "VBA", "Risk Analysis", "Stochastic Modeling", "Expected Value"],
-    icon: `<img src="./projects/edgesim/icon.png" alt="Regen project icon" class="icon-img" />`,
-    image: "./projects/edgesim/preview.png"
-},
-{
-    title: "NumQuant",
-    subtitle: "Macro Dashboard & Equity Scanner",
-    cardMessage: "Custom watchlists, earnings, and macro data all in one tool.",
+      "<p><strong>Problem:</strong> Detects higher-risk market regimes using interpretable signals from public macroeconomic data.</p>" +
+      "<p><strong>Approach:</strong> Engineers a binary crash label, addresses class imbalance, and trains a Naive Bayes classifier using features such as VIX, inflation, and unemployment.</p>" +
+      "<p><strong>Outcome:</strong> Achieves 74% out-of-sample accuracy and supports a regime-based backtest versus buy-and-hold.</p>",
+    tags: [
+      "Machine Learning",
+      "Classification",
+      "Naive Bayes",
+      "Feature Engineering",
+      "Backtesting",
+      "Macroeconomics",
+      "Time Series",
+    ],
+    icon: `<img src="./projects/crashpredict/icon.png" alt="Market Crash Prediction icon" class="icon-img" />`,
+    image: "./projects/crashpredict/preview.png",
+    pdf: "./projects/crashpredict/report.pdf",
+  },
+  {
+    title: "Asset Pricing Factor Research",
+    subtitle: "PCA-enhanced factor model evaluation (R)",
+    cardMessage:
+      "Tests multi-factor model extensions across 101 portfolios using regression, statistical testing, and model selection to measure real explanatory value.",
     description:
-    "<p>A Python dashboard that aggregates live economic indicators, equity screens, earnings calendars, and yield curve data using APIs and web scraping. Designed for macro-informed trading and portfolio research.</p>" +
-    "<p>Includes FOMC calendar, CPI, GDP, inflation expectations, and custom watchlist functionality.</p>",
-    tags: ["Python", "APIs", "Web Scraping", "Finance", "Data Visualization", "Macroeconomics"],
-    icon: `<img src="./projects/numquant/icon.png" alt="Regen project icon" class="icon-img" />`,
-    image: "./projects/numquant/preview.png"
-},
-{
-  title: "Momentum Trading Algo",
-  subtitle: "Scripted MACD + EMA Strategy in ThinkorSwim",
-  cardMessage: "Automated a manual strategy to eliminate discretionary bias.",
-  description:
-  "<p>Built a ThinkorSwim strategy script using custom MACD thresholds and an EMA differential to generate long/short signals. Mirrors a manually tested system, now automated to ensure rule-based execution.</p>" +
-  "<p>Emphasizes simplicity in trend-following and removes subjectivity from real-time decisions.</p>",
-  tags: ["Technical Analysis", "Momentum", "MACD", "EMA", "ThinkorSwim", "Automation"],
-  icon: `<img src="./projects/momentumalgo/icon.png" alt="MomentumAlgo project icon" class="icon-img" />`,
-  image: "./projects/momentumalgo/preview.png"
-},
-{
-  title: "Tee Time Scraper",
-  subtitle: "Automated Tee Time Booker with Weighted Course Preferences",
-  cardMessage: "Automates booking of released tee times based on user-defined preferences.",
-  description:
-  "<p>A Python bot that books golf tee times as soon as they release, based on user-specified course weightings, time windows, and group size. Scrapes availability and automates selection to maximize booking odds.</p>" +
-  "<p>Designed for high-demand public systems with limited tee slots.</p>",
-  tags: ["Python", "Automation", "Web Scraping", "Prioritization Logic", "Booking Tools", "Scheduling"],
-  icon: `<img src="./projects/teetimescraper/icon.png" alt="TeeTimeScraper project icon" class="icon-img" />`,
-  image: "./projects/teetimescraper/preview.png"
-}
+      "<p><strong>Problem:</strong> Evaluates whether additional factors (momentum, liquidity, PCA components) improve explanatory power beyond baseline asset-pricing models.</p>" +
+      "<p><strong>Approach:</strong> Runs portfolio regressions with OLS, performs GRS testing, and applies variable selection to compare competing model families.</p>" +
+      "<p><strong>Outcome:</strong> Shows that simpler factor sets often generalize better, highlighting the risk of overfitting in factor research.</p>",
+    tags: [
+      "R",
+      "Regression",
+      "PCA",
+      "Statistical Testing",
+      "Model Selection",
+      "Financial Data",
+    ],
+    icon: `<img src="./projects/factorforecast/icon.png" alt="Asset Pricing Factor Research icon" class="icon-img" />`,
+    image: "./projects/factorforecast/preview.png",
+    pdf: "./projects/factorforecast/report.pdf",
+  },
+  {
+    title: "Consumer ETF Volatility Forecasting",
+    subtitle: "Regression vs random forest for risk forecasting (Python)",
+    cardMessage:
+      "Forecasts 1-year ETF volatility with engineered time-series features and compares linear models against ensemble methods for generalization.",
+    description:
+      "<p><strong>Problem:</strong> Forecasts forward-looking volatility from historical returns while keeping outputs interpretable for decision-making.</p>" +
+      "<p><strong>Approach:</strong> Engineers rolling volatility and lag features, evaluates regression and random forest models, and compares out-of-sample error across configurations.</p>" +
+      "<p><strong>Outcome:</strong> Demonstrates that simpler linear models with fewer lags outperform more complex methods in out-of-sample accuracy.</p>",
+    tags: [
+      "Python",
+      "Time Series",
+      "Feature Engineering",
+      "Regression",
+      "Random Forest",
+      "Model Evaluation",
+      "Volatility",
+    ],
+    icon: `<img src="./projects/sectorvol/icon.png" alt="Consumer ETF Volatility Forecasting icon" class="icon-img" />`,
+    image: "./projects/sectorvol/preview.png",
+    pdf: "./projects/sectorvol/report.pdf",
+  },
+  {
+    title: "Bank of America Valuation Pitch",
+    subtitle: "Two-stage dividend discount model + comps (Excel)",
+    cardMessage:
+      "Establishes a bank-specific valuation framework using a two-stage DDM and peer comps, tying assumptions to macro drivers and key risks.",
+    description:
+      "<p><strong>Problem:</strong> Values a bank using a framework better suited to financial institutions than a traditional DCF.</p>" +
+      "<p><strong>Approach:</strong> Constructs a two-stage dividend discount model, benchmarks against peers using valuation multiples, and incorporates macro drivers (rates, deposit mix).</p>" +
+      "<p><strong>Outcome:</strong> Produces a structured pitch with valuation range, key assumptions, and risk factors to support decision-making.</p>",
+    tags: [
+      "Valuation",
+      "Financial Modeling",
+      "DDM",
+      "Comparable Multiples",
+      "Excel",
+      "Equity Research",
+    ],
+    icon: `<img src="./projects/bac/icon.png" alt="Bank of America Valuation Pitch icon" class="icon-img" />`,
+    image: "./projects/bac/preview.png",
+    pdf: "./projects/bac/report.pdf",
+  },
 ];
 
-const academicProjects = [
-{
-  title: "Predicting Market Crashes",
-  subtitle: "Naive Bayes Market Crash Classifier",
-  cardMessage: "Outperformed the S&P 500 nearly 3x over 38 years using macro data.",
-  description:
-  "<p>Built a Naive Bayes model to predict monthly market crashes using VIX, inflation, unemployment, and more. Strategy sold on predicted crash months and re-entered on stable signals, avoiding large drawdowns.</p>" +
-  "<p>Backtesting over 1985–2023 showed a 6600% cumulative return, outperforming the S&P 500 with lower volatility.</p>",
-  tags: ["Machine Learning", "Quant Finance", "Backtesting", "Macroeconomics", "Python", "Naive Bayes"],
-  icon: `<img src="./projects/crashpredict/icon.png" alt="CrashPredict project icon" class="icon-img" />`,
-  image: "./projects/crashpredict/preview.png",
-  pdf: "./projects/crashpredict/report.pdf",
-},
-{
-  title: "Asset Pricing Factor Models",
-  subtitle: "PCA-Enhanced Fama-French Asset Pricing Study",
-  cardMessage: "Tested PCA, liquidity, and sector factors across 101 portfolios.",
-  description:
-  "<p>Expanded traditional CAPM and Fama-French models with additional factors like momentum, liquidity, and principal components. Assessed model fit using rolling regressions, GRS testing, and variable selection.</p>" +
-  "<p>Found that simpler 3-factor models still performed best, highlighting the limits of overfitting in real asset pricing.</p>",
-  tags: ["Asset Pricing", "PCA", "Regression", "Portfolio Theory", "Finance", "Machine Learning"],
-  icon: `<img src="./projects/factorforecast/icon.png" alt="Factor Forecast project icon" class="icon-img" />`,
-  image: "./projects/factorforecast/preview.png",
-  pdf: "./projects/factorforecast/report.pdf"
-},
-{
-  title: "Consumer Volatility Forecast",
-  subtitle: "Predictive ML Models for ETF Risk",
-  cardMessage: "Compared regressions and ensemble trees across XLY and XLP.",
-  description:
-  "<p>Forecasted 1-year volatility of consumer ETF sectors using regression and random forest models. Included K-means clustering and feature selection to improve interpretability.</p>" +
-  "<p>Linear models with fewer lags outperformed more complex ones, emphasizing simplicity and generalization.</p>",
-  tags: ["Volatility Forecasting", "Regression", "Random Forest", "Finance", "Time Series", "Python"],
-  icon: `<img src="./projects/sectorvol/icon.png" alt="SectorVol project icon" class="icon-img" />`,
-  image: "./projects/sectorvol/preview.png",
-  pdf: "./projects/sectorvol/report.pdf"
-},
-{
-  title: "BAC Valuation Pitch",
-  subtitle: "Two-Stage Dividend Discount Model for Bank of America",
-  cardMessage: "Valued Bank of America with a dividend growth approach.",
-  description:
-  "<p>Built a two-stage Dividend Discount Model (DDM) for BAC, avoiding traditional DCF issues related to non-physical assets. Valuation estimated ~15% upside based on forward dividend growth.</p>" +
-  "<p>Pitch included peer comps, macro trends, and regulatory analysis across financial institutions.</p>",
-  tags: ["Valuation", "Dividend Discount Model", "Banking", "Fundamental Analysis", "Finance", "Equity Research"],
-  icon: `<img src="./projects/bac/icon.png" alt="BAC Pitch project icon" class="icon-img" />`,
-  image: "./projects/bac/preview.png",
-  pdf: "./projects/bac/report.pdf"
-}
-];
+const academicProjects = [];
 
 const workExperience = [
-{
-company: "United Parcel Service",
-location: "Parsippany, NJ",
-title: "Technician II, Technology Support",
-dates: "May 2025 – Present",
-bullets: [
-    "Delivered technical support to internal teams, maintaining and configuring hardware and software systems",
-    "Provisioned user workstations and supported system rollouts across departments",
-    "Ensured system uptime and stability across warehouse and office environments through proactive maintenance",
-    "Collaborated with cross-functional teams to troubleshoot IT issues and reduce downtime",
-    "Lorem ipsum dipsum dtest ets tse tes tse tes tse tse tes tse tes tse t set est set se tse tes tse test"
-]
-},
-{
-company: "Hair Luxe",
-location: "Cresskill, NJ",
-title: "Financial Operations Analyst",
-dates: "Apr 2020 – May 2025",
-bullets: [
-    "Managed monthly budgeting and expense tracking, identifying cost-saving opportunities that led to a 15% reduction in tech-related expenditures",
-    "Created and maintained financial models for forecasting and capital planning using Excel and VBA",
-    "Produced variance reports and dashboards to support monthly financial reviews and strategic decisions",
-    "Streamlined workflows by automating reporting processes, reducing manual input errors and saving 10 hours/month",
-    "Collaborated with ownership to evaluate investment opportunities and assess ROI on technology upgrades and services"
-]
-}
+  {
+    company: "United Parcel Service",
+    location: "Parsippany, NJ",
+    title: "Technician II (Cloud Analytics / Reporting)",
+    dates: "May 2025 – Present",
+    bullets: [
+      "Built and maintained Cloudability dashboards tracking Azure cloud spend for department-level reporting by cost category, service type, and organizational ID",
+      "Automated cost anomaly detection reporting to flag overspending and unusual usage patterns, improving visibility for key stakeholders",
+      "Delivered recurring cloud cost reporting workflows and presented findings to leadership to support accountability and resource optimization",
+      "Developed a Python automation script to audit 150+ machines and generate Excel pivot-table summaries, reducing audit time from 2 hours to 3 minutes",
+    ],
+  },
+  {
+    company: "Hair Luxe",
+    location: "Cresskill, NJ",
+    title: "Financial Operations Analyst",
+    dates: "Apr 2020 – May 2025",
+    bullets: [
+      "Managed monthly budgeting and expense tracking, identifying cost-saving opportunities that led to a 15% reduction in tech-related expenditures",
+      "Created and maintained forecasting and capital planning models using Excel and VBA",
+      "Produced variance reports and dashboards to support monthly financial reviews and strategic decisions",
+      "Streamlined workflows by automating reporting processes, reducing manual input errors and saving 10+ hours/month",
+      "Partnered with ownership to evaluate investments and assess ROI on technology upgrades and services",
+    ],
+  },
 ];
 
 function renderWorkExperience(experienceList) {
